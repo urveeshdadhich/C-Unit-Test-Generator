@@ -1,0 +1,133 @@
+# C++ Unit Test Generator .gitignore
+
+# Build directories
+build/
+build-*/
+cmake-build-*/
+
+# Coverage reports
+coverage.info
+coverage.filtered.info
+coverage.txt
+coverage-html/
+*.gcov
+*.gcda
+*.gcno
+
+# Generated test files (uncomment if you want to ignore them)
+# tests/*Test.cc
+# tests/*_test.cc
+
+# Backup files
+*.backup
+*.orig
+
+# Log files
+*.log
+test-results.xml
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Docker volumes
+docker-data/
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Node.js (if using any JS tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Rust (if using any Rust tools)
+target/
+Cargo.lock
+
+# GoLang (if using any Go tools)
+*.exe~
+*.test
+*.prof

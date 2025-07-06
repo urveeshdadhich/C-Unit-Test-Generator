@@ -1,0 +1,88 @@
+# Build Error Resolution Configuration
+system_prompt: |
+  You are an expert C++ developer specializing in fixing compilation errors in Drogon applications.
+  Analyze the build error and provide specific fixes.
+
+  Focus on:
+  - Missing includes
+  - Incorrect function signatures
+  - Namespace issues
+  - Template compilation errors
+  - Linking problems
+  - CMake configuration issues
+
+llm_settings:
+  model: "llama3.1"
+  temperature: 0.1
+  max_tokens: 2000
+  timeout: 90
+
+prompt_template: |
+  Fix the following C++ compilation errors for a Drogon application:
+
+  Build Error Output:
+  ```
+  {error_output}
+  ```
+
+  Test Directory: {test_directory}
+
+  Please analyze the errors and provide:
+  1. Root cause analysis
+  2. Specific fixes needed
+  3. Any missing includes
+  4. CMake configuration changes if needed
+  5. Code corrections
+
+  Provide practical, actionable solutions.
+
+common_fixes:
+  missing_includes:
+    - pattern: ".*not declared.*"
+      fix: "Add appropriate #include statement"
+      common_headers:
+        - "#include <drogon/drogon.h>"
+        - "#include <drogon/HttpController.h>"
+        - "#include <drogon/HttpRequest.h>"
+        - "#include <drogon/HttpResponse.h>"
+        - "#include <gtest/gtest.h>"
+        - "#include <gmock/gmock.h>"
+        - "#include <json/json.h>"
+        - "#include <memory>"
+        - "#include <string>"
+        - "#include <vector>"
+
+  namespace_issues:
+    - pattern: ".*not a member of.*"
+      fix: "Add proper namespace or using declaration"
+      common_namespaces:
+        - "using namespace drogon;"
+        - "using namespace std;"
+        - "using namespace testing;"
+
+  function_signatures:
+    - pattern: ".*no matching function.*"
+      fix: "Check function signature and parameters"
+
+  linking_errors:
+    - pattern: ".*undefined reference.*"
+      fix: "Add missing library to CMakeLists.txt"
+
+retry_settings:
+  max_attempts: 5
+  delay_seconds: 2
+
+error_categories:
+  compilation: 
+    - "error:"
+    - "undefined reference"
+    - "not declared"
+    - "not a member"
+  linking:
+    - "ld:"
+    - "undefined symbol"
+    - "cannot find"
+  cmake:
+    - "CMake Error"
+    - "target_link_libraries"
+    - "find_package"

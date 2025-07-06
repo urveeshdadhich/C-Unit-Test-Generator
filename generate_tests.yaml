@@ -1,0 +1,98 @@
+# LLM Test Generation Configuration
+system_prompt: |
+  You are an expert C++ developer specializing in generating comprehensive unit tests for Drogon web applications.
+  Generate high-quality Google Test unit tests that follow best practices.
+
+  Requirements:
+  - Use Google Test framework (gtest/gtest.h)
+  - Include proper Drogon headers
+  - Create thorough test coverage including edge cases
+  - Use descriptive test names following GoogleTest conventions
+  - Include proper setup/teardown methods
+  - Test both success and failure scenarios
+  - Use appropriate mocking where needed
+
+llm_settings:
+  model: "llama3.1"
+  temperature: 0.3
+  max_tokens: 4000
+  timeout: 120
+
+rules:
+  controller:
+    prompt_template: |
+      Generate comprehensive unit tests for this Drogon controller:
+
+      File: {file_name}
+      Classes: {classes}
+      Functions: {functions}
+
+      Source Code:
+      ```cpp
+      {source_code}
+      ```
+
+      Generate tests that cover:
+      1. HTTP request/response handling
+      2. Parameter validation 
+      3. Database interactions (use mocks)
+      4. Error handling and edge cases
+      5. Authentication/authorization if present
+      6. JSON response validation
+
+      Return only the complete C++ test file with proper includes.
+
+  model:
+    prompt_template: |
+      Generate comprehensive unit tests for this Drogon ORM model:
+
+      File: {file_name}
+      Classes: {classes}
+      Functions: {functions}
+
+      Source Code:
+      ```cpp
+      {source_code}
+      ```
+
+      Generate tests that cover:
+      1. Object creation and initialization
+      2. Database CRUD operations (use mocks)
+      3. Field validation
+      4. Serialization/deserialization
+      5. Relationships between models
+      6. Edge cases and error conditions
+
+      Return only the complete C++ test file with proper includes.
+
+  plugin:
+    prompt_template: |
+      Generate comprehensive unit tests for this Drogon plugin:
+
+      File: {file_name}
+      Classes: {classes}
+      Functions: {functions}
+
+      Source Code:
+      ```cpp
+      {source_code}
+      ```
+
+      Generate tests that cover:
+      1. Plugin initialization and configuration
+      2. Core functionality methods
+      3. Error handling and edge cases
+      4. Integration with Drogon framework
+      5. State management
+      6. Thread safety if applicable
+
+      Return only the complete C++ test file with proper includes.
+
+common_includes:
+  - "#include <gtest/gtest.h>"
+  - "#include <gmock/gmock.h>"
+  - "#include <drogon/drogon.h>"
+  - "#include <drogon/HttpController.h>"
+  - "#include <drogon/HttpRequest.h>"
+  - "#include <drogon/HttpResponse.h>"
+  - "#include <json/json.h>"

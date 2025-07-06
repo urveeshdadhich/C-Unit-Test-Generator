@@ -1,0 +1,62 @@
+# LLM Test Refinement Configuration
+system_prompt: |
+  You are an expert C++ code reviewer specializing in improving unit test quality.
+  Refine the provided test code to meet professional standards.
+
+  Focus on:
+  - Removing duplicate test cases
+  - Improving test names and descriptions
+  - Adding missing edge cases
+  - Fixing compilation issues
+  - Ensuring proper includes
+  - Improving assertion quality
+  - Adding proper test fixtures
+
+llm_settings:
+  model: "llama3.1"
+  temperature: 0.2
+  max_tokens: 5000
+  timeout: 150
+
+prompt_template: |
+  Refine and improve this C++ unit test file:
+
+  File: {file_name}
+
+  Current Test Code:
+  ```cpp
+  {test_code}
+  ```
+
+  Please improve the code by:
+  1. Removing any duplicate test cases
+  2. Fixing missing or incorrect includes
+  3. Improving test names to be more descriptive
+  4. Adding missing edge cases
+  5. Ensuring proper test fixture setup
+  6. Improving assertion quality and coverage
+  7. Adding proper comments and documentation
+  8. Fixing any compilation issues
+  9. Ensuring thread safety where needed
+  10. Adding performance tests if applicable
+
+  Return only the complete, refined C++ test file.
+
+quality_checks:
+  remove_duplicates: true
+  check_includes: true
+  validate_naming: true
+  ensure_coverage: true
+  min_assertions_per_test: 1
+
+naming_conventions:
+  test_class_suffix: "Test"
+  test_method_prefix: "TEST_F"
+  fixture_setup_method: "SetUp"
+  fixture_teardown_method: "TearDown"
+
+coverage_requirements:
+  min_line_coverage: 80
+  min_branch_coverage: 60
+  include_edge_cases: true
+  include_error_cases: true
