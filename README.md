@@ -305,33 +305,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 - [Ollama](https://ollama.com/) for making LLM deployment simple
 - [Meta](https://ai.meta.com/) for the LLaMA models
 - [Google Test](https://github.com/google/googletest) for the testing framework
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-
-1. Check the troubleshooting section above
-2. Review the log files in the build directory
-3. Ensure all prerequisites are installed correctly
-4. Verify that Ollama and LLaMA 3.1 are working properly
-
-## 🎓 Academic Use
-
-This project was created for educational purposes to demonstrate:
-- LLM integration in software development workflows
-- Automated test generation techniques
-- CI/CD pipeline automation
-- Modern C++ testing practices
-
-Perfect for computer science students learning about:
-- Software testing methodologies
-- AI-assisted development
-- Build automation
-- Code coverage analysis
-
 ---
 
 **Happy Testing!** 🧪✨
-# C-Unit-Test-Generator
-# C-Unit-Test-Generator
-# C-Unit-Test-Generator
+
